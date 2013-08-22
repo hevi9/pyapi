@@ -5,7 +5,7 @@ include INFO.py
 
 RMALL = rm -rf
 PY3 = python3
-PYTEST = py.test-3
+PYTEST = py.test-3 -s
 SPHINX = sphinx-build
 
 cache = ./build

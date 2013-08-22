@@ -1,3 +1,7 @@
 eclipse.preferences.version=1
 encoding//pynamedoc/__init__.py=utf-8
+encoding//pynamedoc/dom.py=utf-8
+encoding//pynamedoc/extractor.py=utf-8
+encoding//pynamedoc/factory.py=utf-8
+encoding//test/test_extractor.py=utf-8
 encoding/setup.py=utf-8
