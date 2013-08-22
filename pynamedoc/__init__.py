@@ -7,7 +7,7 @@ import logging
 log = logging.getLogger(__name__)
 D = log.debug
 
-def main():
+def main_pynamedoc():
   pass
 
-if __name__ == "__main__": main()
+if __name__ == "__main__": main_pynamedoc()
