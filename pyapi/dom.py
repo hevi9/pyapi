@@ -42,8 +42,6 @@ class Name(collections.UserDict):
     else:
       return self.forest()
     
-  def tag(self,tname):
-    return self.forest.tag(tname)
 
 ##############################################################################
 class Forest(Name):
