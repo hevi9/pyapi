@@ -36,7 +36,7 @@ def _add_arguments(parser):
   parser.add_argument("-d",'--debug', action='store_true',
                       help="set debugging on")
   parser.add_argument("-o",'--out', type=str, metavar="dir",default=control.out,
-                      help="html output directory")
+                      help="html output directory (%(default)s)")
 
 
 def _apply_arguments(args,control):
