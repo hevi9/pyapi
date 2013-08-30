@@ -6,7 +6,6 @@
 import logging
 log = logging.getLogger(__name__)
 D = log.debug
-logging.basicConfig(level=logging.DEBUG)
 import pyapi.extractor as sut
 from hevi_util.processes import cd
 import os
@@ -31,6 +30,8 @@ class test_pyapi(unittest.TestCase):
       sut.extract_module_file(r, p, forest)
     #dump(forest)
       
-if __name__ == "__main__": unittest.main()
+if __name__ == "__main__": 
+  logging.basicConfig(level=logging.DEBUG)
+  unittest.main()
   
   
