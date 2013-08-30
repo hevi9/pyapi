@@ -17,6 +17,29 @@ import sys
 from types import *
 import inspect
 
+##############################################################################
+class control:
+  sys_module_names = (
+    "__builtins__",
+    "__cached__",
+    "__doc__",
+    "__file__",
+    "__initializing__",
+    "__loader__",
+    "__name__",
+    "__package__",
+    "__path__"                  
+  )
+  sys_class_names = (
+    "__class__",
+    "__dict__",
+    "__dir__",
+    "__doc__"    
+  )
+
+
+##############################################################################
+
 def find_files(path, root = None):
   """ """
   ## determine root
@@ -95,17 +118,8 @@ def is_name_ignore(name):
   return False
 
 def is_system_name(name):
-  return name in (
-    "__builtins__",
-    "__cached__",
-    "__doc__",
-    "__file__",
-    "__initializing__",
-    "__loader__",
-    "__name__",
-    "__package__",
-    "__path__"
-  )
+  return (name in control.sys_module_names or
+          name in control.sys_class_names)
   
 ##############################################################################
 __doc__ += """

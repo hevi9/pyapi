@@ -4,10 +4,10 @@
 
 from setuptools import setup, find_packages
 from hevi_util.setups import package_data, console_scripts
-from INFO import *
+from pyapi.INFO import *
 
 setup(
-  install_requires=['distribute'],
+  install_requires=['setuptools >= 0.9'],
   name=name,
   version=version,
   description='Name based python document generator',

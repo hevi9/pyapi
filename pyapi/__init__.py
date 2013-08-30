@@ -7,7 +7,14 @@ import logging
 log = logging.getLogger(__name__)
 D = log.debug
 
-def main_pynamedoc():
+##############################################################################
+
+class control:
+  output_dir = "./pyapi_html"
+
+##############################################################################
+
+def main_pyapi():
   pass
 
-if __name__ == "__main__": main_pynamedoc()
+if __name__ == "__main__": main_pyapi()

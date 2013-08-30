@@ -1,7 +1,7 @@
-## hevi_util Makefile
+## pyapi Makefile
 ## Copyright (C) 2013 Petri Heinilä, License LGPL 2.1
 
-include INFO.py
+include pyapi/INFO.py
 
 RMALL = rm -rf
 PY3 = python3
@@ -12,7 +12,9 @@ cache = ./build
 prefix=/usr/local
 public_html = $(HOME)/public_html/$(name)
 
-modules = $(sort $(wildcard hevi_util/*.py))
+modules = $(sort $(wildcard $(name)/*.py))
+pycaches = $(shell find . -name __pycache__) 
+
 
 ##############################################################################
 
@@ -29,7 +31,7 @@ help::
 install:
 	$(PY3) setup.py install --prefix=$(prefix)
 
-develop:
+develop: public_html
 	$(PY3) setup.py develop
 
 test:
@@ -39,6 +41,8 @@ clean::
 	$(RMALL) build
 	$(RMALL) dist
 	$(RMALL) $(name).egg-info
+	$(RMALL) $(pycaches)
+	
 
 # $(SPHINX) -b html -d $(cache)/doctrees ./doc $(public_html)
   
