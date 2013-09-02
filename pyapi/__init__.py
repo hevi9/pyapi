@@ -6,11 +6,15 @@
 import logging
 log = logging.getLogger(__name__)
 D = log.debug
-from hevi_util.tagtree import Forest
+from hevi_util.tagtree import Forest, dump
+import pyapi.extractor as ext
 import sys
+import os
+j = os.path.join
 import argparse
 import pprint
 import inspect
+import pyapi.generate as gen
 
 ##############################################################################
 
@@ -19,7 +23,7 @@ class control:
   sources = None
   debug = False
 
-def dump(obj):
+def cdump(obj):
   print("class control:")
   for name, sobj in inspect.getmembers(obj):
     if name.startswith("_"): continue
@@ -32,7 +36,7 @@ Generate python API presentation to static html pages.
 
 def _add_arguments(parser):
   parser.add_argument('sources', metavar="source", type=str, nargs='+',
-    help="python source, module or package file or modulename")
+    help="python source, module or package, file or modulename")
   parser.add_argument("-d",'--debug', action='store_true',
                       help="set debugging on")
   parser.add_argument("-o",'--out', type=str, metavar="dir",default=control.out,
@@ -45,6 +49,22 @@ def _apply_arguments(args,control):
     if hasattr(control, name):
       setattr(control, name, value)
 
+def error(msg):
+  log.error(msg)
+  sys.exit(1)
+
+def produce(control):
+  ## extract to forest
+  forest = Forest()
+  for source in control.sources:
+    if not os.path.exists(source): error("{} does not exists".format(source))
+    D(source)
+    for r,p in ext.filter_files(ext.find_files(source)):
+      log.info("extracting {}".format(j(r,p)))
+      ext.extract_module_file(r, p, forest)
+  ## generate
+  gen.generate(forest,control)
+
 def main_pyapi(args=sys.argv[1:]):
   """
   args is list of program arguments, *not* including program name, argv[0].
@@ -53,8 +73,9 @@ def main_pyapi(args=sys.argv[1:]):
   _add_arguments(parser)
   args = parser.parse_args(args)
   _apply_arguments(args, control)
-  logging.basicConfig()
+  logging.basicConfig(level=logging.INFO)
   if control.debug: logging.getLogger().setLevel(logging.DEBUG)
-  dump(control)
+  cdump(control)
+  produce(control)
 
 if __name__ == "__main__": main_pyapi()

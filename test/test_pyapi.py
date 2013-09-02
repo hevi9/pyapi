@@ -7,6 +7,7 @@ import logging
 log = logging.getLogger(__name__)
 D = log.debug
 import pyapi.extractor as sut
+import pyapi
 from hevi_util.processes import cd
 import os
 j = os.path.join
@@ -20,15 +21,16 @@ if not os.path.isdir(root):
   if not os.path.isdir(root):
     sys.exit(1)
 
+class control:
+  out = "./build/api"
+  sources = [j(root,"package")]
+  debug = True
+
 class test_pyapi(unittest.TestCase):
 
   def test_01(self):
     """ extract modules into forest """
-    forest = Forest()
-    for r,p in sut.filter_files(sut.find_files(j(root,"package"))):
-      #D("{} {}".format(r,p))
-      sut.extract_module_file(r, p, forest)
-    #dump(forest)
+    pyapi.produce(control)
       
 if __name__ == "__main__": 
   logging.basicConfig(level=logging.DEBUG)
