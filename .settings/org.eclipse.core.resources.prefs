@@ -3,5 +3,6 @@ encoding//pyapi/__init__.py=utf-8
 encoding//pyapi/extractor.py=utf-8
 encoding//pyapi/generate.py=utf-8
 encoding//test/test_extractor.py=utf-8
+encoding//test/test_generate.py=utf-8
 encoding//test/test_pyapi.py=utf-8
 encoding/setup.py=utf-8

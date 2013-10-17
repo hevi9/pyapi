@@ -34,7 +34,28 @@ class control:
     "__class__",
     "__dict__",
     "__dir__",
-    "__doc__"    
+    "__doc__",
+    "__reduce__",
+    "__le__",
+    "__gt__",
+    "__ne__",
+    "__new__",
+    "__subclasshook__",
+    "__getattribute__",
+    "__module__",
+    "__repr__",
+    "__ge__",
+    "__lt__",
+    "__eq__",
+    "__format__",
+    "__weakref__",
+    "__setattr__",
+    "__str__",
+    "__delattr__",
+    "__sizeof__",
+    "__hash__",
+    "__reduce_ex__"
+    
   )
 
 

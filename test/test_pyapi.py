@@ -22,7 +22,7 @@ if not os.path.isdir(root):
     sys.exit(1)
 
 class control:
-  out = "./build/api"
+  out = "/home/hevi/public_html/pyapi_test"
   sources = [j(root,"package")]
   debug = True
 

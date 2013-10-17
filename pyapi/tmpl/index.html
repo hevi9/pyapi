@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block content %}
+
+<ul>
+{% for entry in forest.index.values() %}
+<li>{{ entry.name }}</li>
+{% endfor %}
+</ul>
+
+{% endblock %}
