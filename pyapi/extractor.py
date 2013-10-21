@@ -3,8 +3,8 @@
 ## Copyright (C) 2013 Petri Heinilä, License LGPL 2.1
 """ Extract names from python module. """
 
-import logging
 from inspect import ismodule
+import logging
 log = logging.getLogger(__name__)
 D = log.debug
 import os
@@ -16,6 +16,7 @@ import importlib.machinery as ilm
 import sys
 from types import *
 import inspect
+from pyapi.things import *
 
 ##############################################################################
 class control:
@@ -103,8 +104,8 @@ def extract_module_file(root,path,forest):
     if mpath[i] not in centry:
       mname2 = ".".join(mpath[:i+1])
       mobj = il.import_module(mname2)
-      centry = Entry(centry,mpath[i],mobj)
-      extract_module_to_entry(centry)
+      centry = Module(centry,mpath[i],mobj)
+      extract_thing(centry)
     else:
       centry = centry[mpath[i]]
   ## clean up sys.path
@@ -117,10 +118,8 @@ def extract_module_to_entry(entry):
   # create members
   for name,obj in inspect.getmembers(entry.obj):
     if is_name_ignore(name): continue
-    subentry = Entry(entry,name,obj)
+    subentry = Module(entry,name,obj)
     extract_thing(subentry)
-  # tags
-  entry.tags.add("module")
   
 def extract_thing(entry):
   D("extract_thing({})".format(entry.path))
@@ -128,7 +127,12 @@ def extract_thing(entry):
   if is_composite(entry.obj):
     for name,obj in inspect.getmembers(entry.obj):
       if is_name_ignore(name): continue
-      subentry = Entry(entry,name,obj)
+      if inspect.isclass(obj):
+        subentry = Class(entry,name,obj)
+      elif inspect.isroutine(obj):
+        subentry = Function(entry,name,obj)
+      else:
+        subentry = Entry(entry,name,obj)
       extract_thing(subentry)
 
 def is_composite(obj):

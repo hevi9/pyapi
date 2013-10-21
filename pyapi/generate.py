@@ -12,7 +12,8 @@ j = os.path.join
 from hevi_util.files import mkdir
 from pkgutil import get_data
 import jinja2
-jenv = jinja2.Environment(loader = jinja2.PackageLoader("pyapi","tmpl"))
+jenv = jinja2.Environment(loader = jinja2.PackageLoader("pyapi","tmpl"),
+                          extensions=["jinja2.ext.loopcontrols"])
 from hevi_util.tagtree import dump
 
 ##############################################################################
@@ -65,7 +66,8 @@ class Index(Page):
   @property
   def ctx(self):
     return {
-      "forest": self.manual.forest
+      "forest": self.manual.forest,
+      "manual": self.manual
     }
 
   def make(self):
@@ -109,7 +111,7 @@ def generate(forest,control):
   Index(manual)
   for entry in forest.index.values():
     if "module" in entry.tags:
-      Module(manual,entry)
+      manual.modules.append(entry)
   manual.process()
   manual.make()
   log.info("done")

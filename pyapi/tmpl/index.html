@@ -1,9 +1,33 @@
 {% extends "base.html" %}
 {% block content %}
 
+{% macro make_module(module) %}
+  <h1>{{module.tags}} {{module.path}}</h1>
+  {% for entry in module.values() %}
+    {% if "module" in entry.tags %}{% continue %}{% endif %}
+    <p>{{entry.tags}} {{entry.name}}</p>
+  {% endfor %}
+{% endmacro %}
+
+
+{% for entry in forest.values() recursive %}
+  {% if "module" in entry.tags %}
+    {{ make_module(entry) }}
+  {% endif %}
+  {% if entry.is_composite %}
+    {{ loop(entry.values()) }}
+  {% endif %}
+{% endfor %}
+
+<hr/>
 <ul>
-{% for entry in forest.index.values() %}
-<li>{{ entry.name }}</li>
+{% for entry in forest.values() recursive %}
+  <li>{{ loop.depth }} {{ entry.name }} {{ entry.tags }} {{ entry.is_composite }} </li>
+  {% if entry.is_composite %}
+    <ul>
+    {{ loop(entry.values()) }}
+    </ul>
+  {% endif %}
 {% endfor %}
 </ul>
 
