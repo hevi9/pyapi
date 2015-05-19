@@ -11,9 +11,9 @@ I = log.info
 E = log.error
 
 
-def function(arg):
-  """ Function does that. """
-  return arg
+def get_pobj_module(name):
+    """ Get python object from name. """
+    return name
 
 
 ARGS = argparse.ArgumentParser()
@@ -24,15 +24,15 @@ ARGS.add_argument("-d", "--debug", action="store_true",
 
 
 def main():
-  args = ARGS.parse_args()
-  logging.basicConfig()
-  if args.debug:
-    logging.getLogger().setLevel(logging.DEBUG)
-  for param in args.params:
-    I(function(param))
-  D("done.")
-  sys.exit(0)
+    args = ARGS.parse_args()
+    logging.basicConfig()
+    if args.debug:
+        logging.getLogger().setLevel(logging.DEBUG)
+    for param in args.params:
+        pass
+    D("done.")
+    sys.exit(0)
 
 
 if __name__ == "__main__":
-  main()
+    main()

@@ -11,7 +11,7 @@ PIP3 = pip3
 SPHINX = sphinx-build
 PEP8 = pep8 --first --show-source --show-pep8
 PYLINT = pylint  --rcfile=setup.cfg
-PYTEST = py.test -qq
+PYTEST = py.test
 
 cache = ./build
 prefix=/usr/local
