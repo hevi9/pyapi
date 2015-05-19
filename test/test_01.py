@@ -27,7 +27,7 @@ import time
 
 def test_01():
     """ Testing 01 """
-    get_pobj_module("pyapi.pyapi")
+    get_pobj_module("pyapi.main")
     assert 0
 
 if __name__ == "__main__":

@@ -19,7 +19,7 @@ setup(
     packages=find_packages(),
     entry_points={
         "console_scripts": [
-            "pyapi=pyapi.pyapi:main"
+            "pyapi=pyapi.main:main"
         ]
     },
     install_requires=[
