@@ -11,18 +11,7 @@ import pytest
 import sys
 sys.path.append("..")
 
-from pyapi.pyapi import get_pobj_module
-
-"""
-from cmd line get modules (or packages) -> module_list
-
-for modules import submodules
-
-retain composition
-"""
-
-
-import time
+from pyapi.main import get_pobj_module
 
 
 def test_01():
