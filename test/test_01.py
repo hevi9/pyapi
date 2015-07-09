@@ -7,4 +7,3 @@ from pyapi.main import get_pobj_module
 def test_01():
     """ Testing 01 """
     get_pobj_module("pyapi.main")
-    assert 0
