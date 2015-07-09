@@ -1,19 +1,19 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 # Copyright (C) 2015 Petri Heinilä, LGPL 2.1
+import logging
+from jinja2 import Environment, PackageLoader
+from html import escape as e
 
 __all__ = (
     "make_page"
 )
 
-import logging   # http://docs.python.org/py3k/library/logging.html
+
 log = logging.getLogger(__name__)
 D = log.debug
 I = log.info
 E = log.error
-from jinja2 import Environment, PackageLoader
-from html import escape as e
-
 jenv = Environment(loader=PackageLoader(__package__, "."))
 
 

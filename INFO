@@ -1,9 +1,0 @@
-# Project basic information
-# this is to be imported/included by python, sh, make
-
-name    = "pyapi"
-title   = "pyapi title here"
-version = "0.0.1"
-author  = "Petri Heinilä"
-url     = "http://github.com/hevi9/pyapi"
-license = "LGPL 2.1"

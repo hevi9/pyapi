@@ -2,16 +2,20 @@
 # -*- coding: utf-8 -*-
 # Copyright (C) 2014 Petri Heinilä, LGPL 2.1
 
-import sys       # http://docs.python.org/py3k/library/sys.html
-import argparse  # http://docs.python.org/py3k/library/argparse.html
-import logging   # http://docs.python.org/py3k/library/logging.html
+import sys
+import argparse
+import logging
 from pyapi.htmls import make_page
 from pyapi.extract import get_pobj_module
+import os
+
+# global objects
 log = logging.getLogger(__name__)
+
+# shortcuts
 D = log.debug
 I = log.info
 E = log.error
-import os
 j = os.path.join
 
 

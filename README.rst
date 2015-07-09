@@ -1,11 +1,5 @@
-pynamedoc -- name based python document generator
-#################################################
+pyapi -- api generation from python package -- experimental  
+###########################################################
 
-Source http://github.com/hevi9/pynamedoc
+Source http://github.com/hevi9/pyapi
 
-Documentation http://hevi9.github.io/pynamedoc
-
-pyapi
-=========
-
-Status: 
