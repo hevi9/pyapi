@@ -4,11 +4,11 @@
 
 import inspect
 from pyapi.nodes import Node
-import logging   # http://docs.python.org/py3k/library/logging.html
+import logging
 from pyapi.rules import rule_name
+import os
 log = logging.getLogger(__name__)
 D = log.debug
-import os
 j = os.path.join
 
 
