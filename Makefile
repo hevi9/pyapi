@@ -14,20 +14,14 @@ help::
 	@echo Targets:
 	@echo "  dev         - install as development mode (symlinks)"
 	@echo "  clean       - clean generated build files"
-	@echo "  test        - run tests"
-	@echo "  style       - python code checks"
 	@echo "  check       - validate project"
 
 dev:
-	$(PIP3) install --user -U flake8 pytest -e .
-
-style::
-	$(FLAKE) .
-  
-test::
-	$(TEST)
+	$(PIP3) install --user -U flake8 pytest -e .	
 
 check:: style test
+	$(FLAKE) .
+	$(TEST)
 	
 clean::
 	$(RMALL) build

@@ -1,21 +1,14 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-# Copyright (C) 2014 Petri Heinilä, LGPL 2.1
+""" pyapi command line interface. """
 
 import sys
 import argparse
 import logging
-from pyapi.htmls import make_page
-from pyapi.extract import get_pobj_module
+from .htmls import make_page
+from pyapi.extracts import get_pobj_module
 import os
 
-# global objects
 log = logging.getLogger(__name__)
-
-# shortcuts
 D = log.debug
-I = log.info
-E = log.error
 j = os.path.join
 
 
@@ -33,6 +26,8 @@ def main():
     logging.basicConfig()
     if args.debug:
         logging.getLogger().setLevel(logging.DEBUG)
+    else:
+        logging.getLogger().setLevel(logging.INFO)
 
     nodes = set()
 
@@ -50,5 +45,5 @@ def main():
     if args.output:
         fo.close()
 
-if __name__ == "__main__":
-    main()
+
+# Copyright (C) 2014 Petri Heinilä, LGPL 2.1

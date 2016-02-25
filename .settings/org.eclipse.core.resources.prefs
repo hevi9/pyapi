@@ -1,12 +1,7 @@
 eclipse.preferences.version=1
 encoding//pyapi/__init__.py=utf-8
-encoding//pyapi/extract.py=utf-8
-encoding//pyapi/extractor.py=utf-8
-encoding//pyapi/generate.py=utf-8
+encoding//pyapi/extracts.py=utf-8
 encoding//pyapi/htmls.py=utf-8
 encoding//pyapi/main.py=utf-8
 encoding//pyapi/nodes.py=utf-8
-encoding//pyapi/things.py=utf-8
-encoding//test/test_01.py=utf-8
-encoding//test/test_generate.py=utf-8
 encoding/setup.py=utf-8

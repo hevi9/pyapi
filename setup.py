@@ -4,21 +4,23 @@
 
 from setuptools import setup
 
-info = dict()
-with open("INFO") as f:
-    exec(f.read(), info)
-
 setup(
     name="pyapi",
-    packages=("pyapi"),
+    packages=["pyapi"],
+    version="0.0.3",
     entry_points={
         "console_scripts": [
             "pyapi=pyapi.main:main"
         ]
     },
     install_requires=[
-        "hevi-lib"
+        "jinja2",
+        "hevi-lib>=dev",  # have to have version for dependency_links
+        "mkwww>=dev"  # have to have version for dependency_links
     ],
     dependency_links=[
-    ]
+        'https://github.com/hevi9/hevi-lib/tarball/master#egg=hevi-lib-dev',
+        'https://github.com/hevi9/mkwww/tarball/master#egg=mkwww-dev'
+    ],
+
 )
