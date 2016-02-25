@@ -2,16 +2,16 @@
 # -*- coding: utf-8 -*-
 
 import inspect
-from pyapi.nodes import Node
+# from pyapi.nodes import Node
 import logging
-from pyapi.rules import rule_name
+# from pyapi.rules import rule_name
 import os
-import sys
-import importlib as il
-import importlib.machinery as ilm
+# import sys
+# import importlib as il
+# import importlib.machinery as ilm
 # from types import *
-from types import ModuleType
-from .nodes import Module, Class, Function, Node
+# from types import ModuleType
+# from .nodes import Module, Class, Function, Node
 
 log = logging.getLogger(__name__)
 D = log.debug

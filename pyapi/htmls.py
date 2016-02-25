@@ -22,9 +22,9 @@ class WriteBuf:
     def __init__(self):
         self._buf = list()
 
-    def write(self, str):
-        self._buf.append(str)
-        return len(str)
+    def write(self, text):
+        self._buf.append(text)
+        return len(text)
 
     def value(self):
         return "".join(self._buf)

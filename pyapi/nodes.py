@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-# Copyright (C) 2015 Petri Heinilä, LGPL 2.1
 
 
 class Node:
@@ -45,3 +44,5 @@ class Function(Node):
 
     def __init__(self, obj, name=None):
         super().__init__(obj, name)
+
+# Copyright (C) 2015 Petri Heinilä, LGPL 2.1
