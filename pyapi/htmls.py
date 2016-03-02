@@ -53,32 +53,29 @@ def make_module_section(module_node, write_func):
     w("</ol>")
 
 
-def make_page(nodes, write_func):
+def make_page(root, write_func):
 
     module_nodes = list()
     wbuf = WriteBuf()
 
     # find modules from node trees
-    def find_module(tnode):
-        if tnode.is_module:
-            module_nodes.append(tnode)
-            for snode in tnode.subs:
-                find_module(snode)
-    for node in nodes:
-        find_module(node)
-
-    module_nodes.sort(key=lambda node: node.name)
-
-    for module_node in module_nodes:
-        make_module_section(module_node, wbuf.write)
-
+#     def find_module(tnode):
+#         if tnode.is_module:
+#             module_nodes.append(tnode)
+#             for snode in tnode.subs:
+#                 find_module(snode)
+#     for node in nodes:
+#         find_module(node)
+#     module_nodes.sort(key=lambda node: node.name)
+#     for module_node in module_nodes:
+#         make_module_section(module_node, wbuf.write)
     # make context
     ctx = {
         "title": "pyapi",
-        "content": wbuf.value_nl()
+        "root": root
     }
 
-    tmpl = jenv.get_template("page.html", globals=ctx)
+    tmpl = jenv.get_template("tmpl/page.html", globals=ctx)
 
     # write
     write_func(tmpl.render())

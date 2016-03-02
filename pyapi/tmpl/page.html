@@ -1,7 +1,29 @@
-<title>{{title}}</title>
+{% extends "tmpl/base.html" %}
 
-<style>
-{% include "style.css" %}
-</style>
 
-{{content}}
+{# macro have to be ourside of the block block #}
+{% macro walk(attrs) %}
+<div>
+{%- for node in attrs | sort(attribute="name") %}
+<button class="btn btn-default node">{{ node.path }}</button>
+{%- endfor %}
+</div>
+{%- for node in attrs | sort(attribute="name") %}
+{{- walk(node.attrs) }}
+{%- endfor %}
+{%- endmacro %}
+
+{% block content %}
+
+<script>
+$(document).ready(function(){
+    $(".node").click(function(){
+        $(this).next().toggle();
+    });
+}); 
+</script>
+
+{{ walk(root.attrs) }}
+
+
+{% endblock %}

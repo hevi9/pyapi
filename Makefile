@@ -1,5 +1,7 @@
 # development helpers for pyapi
 
+PY = python3.5
+
 help:
 	@echo Targets:
 	@echo "  dev         - install as development mode (symlinks)"
@@ -8,9 +10,9 @@ help:
 
 dev: clean
 	sudo apt-get -y install python3-pip
-	pip3 install --user --upgrade pip
-	pip3 install --user --upgrade flake8 pytest tox
-	pip3 install --user --process-dependency-links -e .
+	$(PY) -m pip install --user --upgrade pip
+	$(PY) -m pip install --user --upgrade flake8 pytest tox
+	$(PY) -m pip install --user --process-dependency-links -e .
 
 check:
 	flake8 .

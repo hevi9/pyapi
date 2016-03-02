@@ -3,7 +3,6 @@
 	<name>pyapi</name>
 	<comment></comment>
 	<projects>
-		<project>hevi_util</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
