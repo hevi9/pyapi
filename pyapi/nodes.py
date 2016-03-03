@@ -4,6 +4,7 @@
 from inspect import getmembers, ismodule
 import logging
 log = logging.getLogger(__name__)
+D = log.debug
 
 
 class Node:
@@ -24,6 +25,7 @@ class Node:
         self._attrs = set()
         if up and self not in up.attrs:
             up.attrs.add(self)
+        D("new %r", self)
 
     @property
     def name(self):

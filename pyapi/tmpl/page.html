@@ -2,28 +2,34 @@
 
 
 {# macro have to be ourside of the block block #}
-{% macro walk(attrs) %}
-<div>
-{%- for node in attrs | sort(attribute="name") %}
-<button class="btn btn-default node">{{ node.path }}</button>
+{% macro walk(node) %}
+<button id="{{node.path}}" class="btn btn-default node">{{ node.path }}</button>
+{%- if node.attrs %}
+<div id="{{ node.path }}.div" class="nodes">
+{%- for subnode in node.attrs | sort(attribute="name") %}
+{{- walk(subnode) }}
 {%- endfor %}
-</div>
-{%- for node in attrs | sort(attribute="name") %}
-{{- walk(node.attrs) }}
-{%- endfor %}
-{%- endmacro %}
+</div> <!-- {{ node.path }}.div -->
+{%- endif %}
+{% endmacro %}
 
 {% block content %}
 
 <script>
+function jq( myid ) {	 
+    return "#" + myid.replace( /(:|\.|\[|\]|,)/g, "\\$1" );
+}
 $(document).ready(function(){
     $(".node").click(function(){
-        $(this).next().toggle();
+    	var sel = jq($(this).attr("id") + ".div");
+        $(sel).toggle();
     });
 }); 
 </script>
 
-{{ walk(root.attrs) }}
+{% for node in root.attrs %}
+{{ walk(node) }}
+{% endfor %}
 
 
 {% endblock %}
