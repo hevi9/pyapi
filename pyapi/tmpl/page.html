@@ -3,14 +3,30 @@
 
 {# macro have to be ourside of the block block #}
 {% macro walk(node) %}
-<button id="{{node.path}}" class="btn btn-default node">{{ node.path }}</button>
+
+<div id="{{ node.path }}.scope" class="scope">
+
 {%- if node.attrs %}
-<div id="{{ node.path }}.div" class="nodes">
+<div id="{{ node.path }}.attrs" class="attrs">
+{%- for subnode in node.attrs | sort(attribute="name") %}
+<button id="{{subnode.path}}" class="node">{{ subnode.signature }}</button>
+{%- endfor %}
+</div> <!-- {{ node.path }}.attrs -->
+{%- endif %}
+
+{% if node.doc %}
+<!-- {{node.path}} doc -->
+<pre class="doc">{{ node.doc|e }}</pre>
+{% endif %}
+
+{%- if node.attrs %}
 {%- for subnode in node.attrs | sort(attribute="name") %}
 {{- walk(subnode) }}
 {%- endfor %}
-</div> <!-- {{ node.path }}.div -->
 {%- endif %}
+
+</div> <!-- {{ node.path }}.scope -->
+
 {% endmacro %}
 
 {% block content %}
@@ -21,15 +37,26 @@ function jq( myid ) {
 }
 $(document).ready(function(){
     $(".node").click(function(){
-    	var sel = jq($(this).attr("id") + ".div");
-        $(sel).toggle();
+    	$(".scope").hide();
+        var id = "";
+        var sel = id + ".scope";
+        console.log("show", sel);
+        $(jq(sel)).show();
+        for(let i of $(this).attr("id").split(".")) {
+        	if(id == "") {
+        		id = i;
+        	} else {
+        	   id += "." + i;
+        	}
+            var sel = id + ".scope";
+            console.log("show", sel);
+            $(jq(sel)).show();
+        }
     });
 }); 
 </script>
 
-{% for node in root.attrs %}
-{{ walk(node) }}
-{% endfor %}
+{{ walk(root) }}
 
 
 {% endblock %}

@@ -4,3 +4,10 @@ h1 {
 	border-top-style: dashed;
 	border-width: thin;
 }
+
+div {
+	border-color: red;
+	border-width: 1px;
+	border-style: solid;
+	padding: 1px;
+}

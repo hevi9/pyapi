@@ -3,6 +3,7 @@
 
 from inspect import getmembers, ismodule
 import logging
+import pydoc
 log = logging.getLogger(__name__)
 D = log.debug
 
@@ -36,7 +37,18 @@ class Node:
     def path(self):
         """ Object name as str. """
         return ((self._up.path + "." if self._up and self._up._name else "") + self._name) if \
-            self._name else None
+            self._name else ""
+
+    @property
+    def signature(self):
+        if hasattr(self, "visible"):
+            return self.visible
+        else:
+            return self.name
+
+    @property
+    def doc(self):
+        return pydoc.getdoc(self._obj)
 
     @property
     def attrs(self):
