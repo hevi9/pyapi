@@ -2,7 +2,7 @@ pyapi -- api generation from python modules -- experimental
 ###########################################################
 
 
-Goals (Features)::
+Goals (Features):
 
 * Compact representation of the usable python objects in api
 * Content insight of composite (module, class) objects
