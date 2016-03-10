@@ -26,7 +26,7 @@ class Node:
         self._attrs = set()
         if up and self not in up.attrs:
             up.attrs.add(self)
-        D("new %r", self)
+        # D("new %r", self)
 
     @property
     def name(self):

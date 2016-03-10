@@ -11,3 +11,7 @@ div {
 	border-style: solid;
 	padding: 1px;
 }
+
+.test {
+  background: red;
+}

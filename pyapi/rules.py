@@ -55,7 +55,7 @@ def ignore(obj, up=None, name=None):
 
 
 def study(obj, up=None, name=None):
-    D("study %r as %r", name, obj)
+    # D("study %r as %r", name, obj)
     return None
 
 

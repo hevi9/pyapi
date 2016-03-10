@@ -13,8 +13,8 @@ def build_node(obj, *, up=None, name=None):
     for applies, factory, _ in get_rules():
         if applies(obj, name):
             node = factory(obj, up=up, name=name)
-            if node:
-                D("%r as %r -> %r", node.name, obj, node)
+            # if node:
+            #    D("%r as %r -> %r", node.name, obj, node)
             return node
     # None applied, ignore ? or generic
     log.warn("no rule for %r as %r in %r", name, obj, up.name)
