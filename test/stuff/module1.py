@@ -1,3 +1,7 @@
+"""
+Module 1 documentation.
+"""
+
 class A:
     """ A doc """
 
@@ -6,8 +10,10 @@ class A:
 
 
 class B:
+    """ class B doc """
 
     class BB:
+        """ subclass BB doc """
 
         def __init__(self):
             """ BB init doc """

@@ -5,13 +5,15 @@ h1 {
 	border-width: thin;
 }
 
-div {
+nodiv {
 	border-color: red;
 	border-width: 1px;
 	border-style: solid;
 	padding: 1px;
 }
 
-.test {
-  background: red;
+
+.scope {
+	margin-top: 2pt;
+	margin-bottom: 2pt;
 }
