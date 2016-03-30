@@ -17,7 +17,12 @@ def dev_help():
 
 def dev_html():
     main("-d", "-b", "-p", "/tmp/out.html",
+         "stuff.module1")
+
+def dev_html2():
+    main("-d", "-b", "-p", "/tmp/out.html",
          "stuff.module1", "stuff.package.module2")
+
 
 if __name__ == "__main__":
     logging.basicConfig(level=logging.DEBUG)

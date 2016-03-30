@@ -5,39 +5,14 @@
 {% macro walk(node) %}
 
 <div id="{{ node.path }}.scope" class="scope">
-
-{%- if node.attrs %}
-<div id="{{ node.path }}.attrs" class="attrs">
-{% if node.doc %}
-    <button id="{{node.path}}.doc" class="btn btn-default btn-sm node"><span class="glyphicon glyphicon-file"></span></button>
-{% endif %}
-{%- for subnode in node.attrs | sort(attribute="name") %}
-
-<button id="{{subnode.path}}" class="btn btn-sm btn-default node">{{ subnode.signature }}</button>
-
-{%- endfor %}
-</div> <!-- {{ node.path }}.attrs -->
-{%- endif %}
-
-{% if node.doc %}
-    {%  if node.attrs %}
-    <div id="{{ node.path }}.doc.scope" class="scope">
-    {%  endif %}
-<!-- {{node.path}} doc -->
-<pre class="doc">{{ node.doc|e }}</pre>
-    {% if node.attrs %}
-    </div> <!-- {{ node.path }}.doc.scope -->
-    {% endif %}
-{% endif %}
-
-{%- if node.attrs %}
-{%- for subnode in node.attrs | sort(attribute="name") %}
-{{- walk(subnode) }}
-{%- endfor %}
-{%- endif %}
-
+{{ node.path }}
 </div> <!-- {{ node.path }}.scope -->
 
+{% if node.attrs %}
+{% for subnode in node.attrs | sort(attribute="name", case_sensitive=True) %}
+{{ walk(subnode) }}
+{% endfor %}
+{% endif %}
 {% endmacro %}
 
 {% block content %}

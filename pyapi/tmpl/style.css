@@ -1,19 +1,27 @@
 
-h1 {
-	font-size: medium;
-	border-top-style: dashed;
-	border-width: thin;
+body {
+    background-color: #23527c;
+    margin: 0;
 }
 
-nodiv {
-	border-color: red;
-	border-width: 1px;
-	border-style: solid;
-	padding: 1px;
+.content {
+    min-height: 90vh;
+    background-color: white;
 }
 
+footer {
+    color: white;
+    padding-top: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.container-fluid {
+    padding-left: 0;
+    padding-right: 0;
+}
 
 .scope {
-	margin-top: 2pt;
-	margin-bottom: 2pt;
+    margin-top: 0pt;
+    margin-bottom: 0pt;
 }

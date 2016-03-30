@@ -6,7 +6,11 @@ __all__ = (
     "make_page"
 )
 
-jenv = Environment(loader=PackageLoader(__package__, "."))
+jenv = Environment(
+    loader=PackageLoader(__package__, "."),
+    trim_blocks=True,
+    lstrip_blocks=True
+)
 
 
 def make_page(root, fo):
