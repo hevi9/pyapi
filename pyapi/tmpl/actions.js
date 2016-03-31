@@ -21,7 +21,22 @@ function show_scope() {
     $(jq(sel)).show();
 }
 
+// this is inefficient
+function button_adjust_height() {
+    "use strict";
+    let height_max = 0;
+    $(".btn").each(function() {
+        if($(this).height() > height_max) {
+            height_max = $(this).height();
+        }
+    });
+    $(".btn").height(height_max);
+}
+
+
 $(document).ready(function () {
     prepare();
     $(".nodenav").click(show_scope);
 });
+
+

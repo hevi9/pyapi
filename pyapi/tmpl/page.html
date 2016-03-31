@@ -14,26 +14,39 @@
 {% if part.name == None -%}
 <a id="{{ part.path }}.nav" href="#" class="nodenav navbar-brand"><span  class="glyphicon glyphicon-home"></span></a>
 {% else -%}
-<a id="{{ part.path }}.nav" href="#" class="nodenav btn">{{ part.name }}</a>
+<a id="{{ part.path }}.nav" href="#{{ part.path }}" class="nodenav btn">{{ part.html }}</a>
 {% endif -%}
 </li>
 {%  endfor %}
 </ul>
 </nav>
 
+
 <div class="container">
+
+{%  if node.name %}
+<div class="panel panel-info">
+<div class="panel-body">{{ node.name }}</div>
+</div>
+{%  endif %}
+
 <ul class="list-inline">
 {%  for attr in node.attrs | sort(attribute="name", case_sensitive=True) %}
-<li><button id="{{ attr.path }}.part" class="btn btn-default btn-sm nodenav">{{ attr.name  }}</button></li>
+<li><a id="{{ attr.path }}.part" href="#{{ attr.path }}" class="btn btn-default btn-sm nodenav">{{ attr.html  }}</a></li>
 {%  endfor %}
 </ul>
-</div>
 
 {%  if node.doc %}
-<div class="container">
-<pre>{{ node.doc }}</pre>
-</div>
+<pre>{{ node.doc | e}}</pre>
 {% endif %}
+
+{%  if node.source %}
+<pre>{{ node.source | e }}</pre>
+{% endif %}
+
+
+
+</div> <!-- container -->
 
 </div> <!-- {{ node.path }}.scope -->
 
