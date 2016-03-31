@@ -25,3 +25,7 @@ footer {
     margin-top: 0pt;
     margin-bottom: 0pt;
 }
+
+.list-inline > li {
+    padding-bottom: 7px;
+}
