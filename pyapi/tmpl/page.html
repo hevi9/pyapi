@@ -6,26 +6,42 @@
 
 <div id="{{ node.path }}.scope" class="scope">
 
-{%- if node.attrs %}
-<div id="{{ node.path }}.attrs" class="attrs">
-{%- for subnode in node.attrs | sort(attribute="name") %}
-<button id="{{subnode.path}}" class="node">{{ subnode.signature }}</button>
-{%- endfor %}
-</div> <!-- {{ node.path }}.attrs -->
-{%- endif %}
 
-{% if node.doc %}
-<!-- {{node.path}} doc -->
-<pre class="doc">{{ node.doc|e }}</pre>
+<nav class="navbar navbar-default navbar-static-top">
+<ul class="nav navbar-nav">
+{%  for part in node.path_nodes %}
+<li>
+{% if part.name == None -%}
+<a id="{{ part.path }}.nav" href="#" class="nodenav navbar-brand"><span  class="glyphicon glyphicon-home"></span></a>
+{% else -%}
+<a id="{{ part.path }}.nav" href="#" class="nodenav btn">{{ part.name }}</a>
+{% endif -%}
+</li>
+{%  endfor %}
+</ul>
+</nav>
+
+<div class="container">
+<ul class="list-inline">
+{%  for attr in node.attrs | sort(attribute="name", case_sensitive=True) %}
+<li><button id="{{ attr.path }}.part" class="btn btn-default btn-sm nodenav">{{ attr.name  }}</button></li>
+{%  endfor %}
+</ul>
+</div>
+
+{%  if node.doc %}
+<div class="container">
+<pre>{{ node.doc }}</pre>
+</div>
 {% endif %}
 
-{%- if node.attrs %}
-{%- for subnode in node.attrs | sort(attribute="name") %}
-{{- walk(subnode) }}
-{%- endfor %}
-{%- endif %}
-
 </div> <!-- {{ node.path }}.scope -->
+
+{% if node.attrs %}
+{% for subnode in node.attrs | sort(attribute="name", case_sensitive=True) %}
+{{ walk(subnode) }}
+{% endfor %}
+{% endif %}
 
 {% endmacro %}
 

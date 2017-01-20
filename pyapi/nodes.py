@@ -11,7 +11,11 @@ D = log.debug
 class Node:
 
     def __init__(self, obj, *, up=None, name=None):
-        """ Node handling python object. """
+        """ Node handling python object.
+        :param obj:
+        :param up:
+        :param name:
+        """
         self._obj = obj
         self._up = up
         if name:
@@ -38,6 +42,10 @@ class Node:
         """ Object name as str. """
         return ((self._up.path + "." if self._up and self._up._name else "") + self._name) if \
             self._name else ""
+
+    @property
+    def path_nodes(self):
+        return (self._up.path_nodes if self._up else [])  + [self]
 
     @property
     def signature(self):
