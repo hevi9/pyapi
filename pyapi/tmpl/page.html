@@ -14,7 +14,7 @@
 {% if part.name == None -%}
 <a id="{{ part.path }}.nav" href="#" class="nodenav navbar-brand"><span  class="glyphicon glyphicon-home"></span></a>
 {% else -%}
-<a id="{{ part.path }}.nav" href="#{{ part.path }}" class="nodenav btn">{{ part.html }}</a>
+<a id="{{ part.path }}.nav" href="#{{ part.path }}" class="nodenav">{{ part.html }}</a>
 {% endif -%}
 </li>
 {%  endfor %}
@@ -26,13 +26,19 @@
 
 {%  if node.name %}
 <div class="panel panel-info">
-<div class="panel-body">{{ node.name }}</div>
+<div class="panel-body">
+{{ node.type |e }}
+{{ node.html }}
+{% if node.html != node.name %}
+{{ node.name }}
+{% endif %}
+</div>
 </div>
 {%  endif %}
 
 <ul class="list-inline">
 {%  for attr in node.attrs | sort(attribute="name", case_sensitive=True) %}
-<li><a id="{{ attr.path }}.part" href="#{{ attr.path }}" class="btn btn-default btn-sm nodenav">{{ attr.html  }}</a></li>
+<li><a id="{{ attr.path }}.part" href="#{{ attr.path }}" class="btn btn-default btn-xs nodenav">{{ attr.html  }}</a></li>
 {%  endfor %}
 </ul>
 
@@ -40,7 +46,7 @@
 <pre>{{ node.doc | e}}</pre>
 {% endif %}
 
-{%  if node.source %}
+{%  if node.source and False %}
 <pre>{{ node.source | e }}</pre>
 {% endif %}
 

@@ -27,7 +27,11 @@ def dev_html3():
     main("-d", "-b", "-p", "/tmp/out.html",
          "numbers")
 
+def dev_html4():
+    main("-d", "-b", "-p", "/tmp/out.html",
+         "datetime", "time")
+
 
 if __name__ == "__main__":
     logging.basicConfig(level=logging.DEBUG)
-    dev_html3()
+    dev_html4()

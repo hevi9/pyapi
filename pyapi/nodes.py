@@ -39,9 +39,18 @@ class Node:
         # D("new %r", self)
 
     @property
+    def obj(self):
+        """ Object """
+        return self._obj
+
+    @property
     def name(self):
         """ Object name as str. """
         return self._name
+
+    @property
+    def type(self):
+        return type(self._obj)
 
     @property
     def path(self):
